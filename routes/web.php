@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Castle\CastleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +26,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+// Admin Dashboard Route without Admin Group
+
+Route::middleware('guest')->group(function () {
+    Route::get('castle/login',[CastleController::class,'login'])->name('castle.login');
+});
+
+
+Route::group(['prefix' => 'castle','middleware'=>'guest'], function (){
+    Route::get('/dashboard',[CastleController::class,'dashboard'])
+        ->name('castle.dashboard');
 });
 
 require __DIR__.'/auth.php';
