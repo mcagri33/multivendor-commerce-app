@@ -35,7 +35,7 @@
                             <h5 class="card-title">Login</h5>
                             @include('castle.layouts.alert')
                             <p class="card-text mb-5"></p>
-                            <form class="form-body" action="{{route('castle.login')}}" method="post">
+                            <form class="form-body" action="{{route('castle.login.post')}}" method="post">
                                 @csrf
                                 <div class="row g-3">
                                     <div class="col-12">
@@ -46,6 +46,9 @@
                                             <input type="email" class="form-control radius-30 ps-5" name="email"
                                                    id="email" placeholder="Email Address">
                                         </div>
+                                        @error("password")
+                                        <span class="text-danger">{{$message}}</span>
+                                        @enderror
                                     </div>
                                     <div class="col-12">
                                         <label for="inputChoosePassword" class="form-label">Enter Password</label>
@@ -55,6 +58,9 @@
                                             <input type="password" class="form-control radius-30 ps-5" name="password"
                                                    id="password" placeholder="Enter Password">
                                         </div>
+                                        @error("password")
+                                        <span class="text-danger">{{$message}}</span>
+                                        @enderror
                                     </div>
                                     <div class="col-12">
                                         <div class="d-grid">
