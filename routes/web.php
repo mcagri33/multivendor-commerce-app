@@ -32,10 +32,12 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('guest')->group(function () {
     Route::get('castle/login',[CastleController::class,'login'])->name('castle.login');
+    Route::post('castle/login/owner',[CastleController::class,'loginPost'])->name('castle.login.post');
+
 });
 
 
-Route::group(['prefix' => 'castle','middleware'=>'guest'], function (){
+Route::group(['prefix' => 'castle','middleware'=>'admin'], function (){
     Route::get('/dashboard',[CastleController::class,'dashboard'])
         ->name('castle.dashboard');
 });
