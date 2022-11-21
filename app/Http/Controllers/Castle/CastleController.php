@@ -20,6 +20,11 @@ class CastleController extends Controller
 
     public function loginPost(Request $request)
     {
+        $request->validate([
+            'password' => 'required',
+            'email' => 'required|email'
+        ]);
+
         $check = $request->all();
         if (Auth::guard('admin')->attempt(['email' => $check['email'],
             'password' => $check['password'], 'status' => 1])) {
@@ -27,7 +32,11 @@ class CastleController extends Controller
         } else {
             return back()->with('error', 'Wrong Email or password!');
         }
+    }
 
+    public function castleLogout() {
+        Auth::guard('admin')->logout();
+        return redirect()->route('login_form')->with('success', 'Logout Success!');
     }
 
 }
