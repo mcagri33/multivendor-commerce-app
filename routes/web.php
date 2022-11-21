@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Castle\CastleController;
+use App\Http\Controllers\Castle\CastleAdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,6 +41,23 @@ Route::middleware('guest')->group(function () {
 Route::group(['prefix' => 'castle','middleware'=>'admin'], function (){
     Route::get('/dashboard',[CastleController::class,'dashboard'])
         ->name('castle.dashboard');
+    Route::get('/logout',[CastleController::class,'castleLogout'])
+        ->name('castle.logout');
+});
+
+Route::group(['prefix' => 'castle/admin','middleware'=>'guest'], function (){
+    Route::get('/',[CastleAdminController::class,'index'])
+        ->name('castle.admin.index');
+    Route::get('/create',[CastleAdminController::class,'create'])
+        ->name('castle.admin.create');
+    Route::post('/store',[CastleAdminController::class,'store'])
+        ->name('castle.admin.store');
+    Route::get('/edit/{id}',[CastleAdminController::class,'edit'])
+        ->name('castle.admin.edit');
+    Route::post('/update',[CastleAdminController::class,'update'])
+        ->name('castle.admin.update');
+    Route::get('/delete/{id}',[CastleAdminController::class,'destroy'])
+        ->name('castle.admin.delete');
 });
 
 require __DIR__.'/auth.php';
