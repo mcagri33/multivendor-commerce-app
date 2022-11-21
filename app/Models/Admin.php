@@ -14,9 +14,7 @@ class Admin extends Authenticatable
         'uuid',
         'name',
         'type',
-        'mobile',
         'image',
-        'vendor_id',
         'email',
         'password',
         'status'
