@@ -18,9 +18,8 @@ return new class extends Migration
             $table->uuid();
             $table->string('name');
             $table->string('type');
-            $table->string('mobile');
-            $table->string('image');
-            $table->integer('vendor_id');
+            $table->string('mobile')->nullable();
+            $table->string('image')->nullable();
             $table->string('email')->unique();
             $table->string('password');
             $table->boolean('status')->default(1);
