@@ -44,7 +44,7 @@
                 <div class="menu-title">Catalog</div>
             </a>
             <ul>
-                <li> <a href="#"><i class="bi bi-circle"></i>Categories</a>
+                <li> <a href="{{route('castle.category.index')}}"><i class="bi bi-circle"></i>Categories</a>
                 <li> <a href="#"><i class="bi bi-circle"></i>Products</a>
 
             </ul>
