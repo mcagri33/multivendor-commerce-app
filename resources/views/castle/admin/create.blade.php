@@ -1,5 +1,5 @@
 @extends('castle.castle_master')
-@section('title','Dil Düzenle')
+@section('title','Admin User Add')
 @section('castle')
 
     <main class="page-content">
