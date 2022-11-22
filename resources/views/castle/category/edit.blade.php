@@ -51,7 +51,7 @@
 
                                 <div class="col-12">
                                     <label class="form-label">Slug</label>
-                                    <input type="text" name="slug" value="{{$categoryFind->slug}}" class="form-control" placeholder="Slug">
+                                    <input type="text" name="slug"  class="form-control" placeholder="Slug">
                                     @error("slug")
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
