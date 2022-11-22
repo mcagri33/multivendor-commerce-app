@@ -52,9 +52,7 @@ class CastleAdminController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'type' => $request->type,
-            'mobile' => $request->mobile,
             'image' => $request->image,
-            'vendor_id' => $request->vendor_id,
         ]);
         return redirect()->route('castle.admin.index')->with('success', 'Success Created!');
 
@@ -92,7 +90,6 @@ class CastleAdminController extends Controller
         $adminId->email = $request->email;
         $adminId->password = Hash::make($request->password);
         $adminId->type = $request->type;
-        $adminId->mobile = $request->mobile;
         $adminId->image = $request->image;
         $adminId->status = $request->status;
         $adminId->update();
