@@ -69,7 +69,7 @@
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table align-middle">
-                                        @if(count($sliders)>0)
+                                        @if(count($brands)>0)
                                             <thead class="table-light">
                                             <tr>
                                                 <th>ID</th>

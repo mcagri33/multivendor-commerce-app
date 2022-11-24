@@ -34,8 +34,6 @@
                                     <button type="submit" class="btn btn-primary">Publish Now</button>
                                 </div>
                             </div>
-                    </div>
-
                     <div class="card-body">
                         <div class="row g-3">
                             <div class="col-12 col-lg-8">
