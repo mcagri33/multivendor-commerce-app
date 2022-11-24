@@ -39,7 +39,8 @@
                                 <div class="col-12">
                                     <label class="form-label">Category</label>
                                     <select class="form-select mb-3" name="parent_id" aria-label="Default select example">
-                                        @foreach($data as $category )
+                                        <option value="">Select Main Category</option>
+                                    @foreach($data as $category )
                                             <option value="{{$category->id}}">{{$category->name}}</option>
                                         @endforeach
                                     </select>
