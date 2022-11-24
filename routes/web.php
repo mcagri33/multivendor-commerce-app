@@ -7,6 +7,7 @@ use App\Http\Controllers\Castle\CastleAdminController;
 use App\Http\Controllers\Castle\CastleCategoryController;
 use App\Http\Controllers\Castle\CastleProductController;
 use App\Http\Controllers\Castle\CastleSliderController;
+use App\Http\Controllers\Castle\CastleBrandController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -97,8 +98,6 @@ Route::group(['prefix' => 'castle/product','middleware'=>'admin'], function (){
 Route::group(['prefix' => 'castle/slider','middleware'=>'admin'], function (){
     Route::get('/',[CastleSliderController::class,'index'])
         ->name('castle.slider.index');
-    Route::get('/create',[CastleSliderController::class,'create'])
-        ->name('castle.slider.create');
     Route::post('/store',[CastleSliderController::class,'store'])
         ->name('castle.slider.store');
     Route::get('/edit/{id}',[CastleSliderController::class,'edit'])
@@ -107,6 +106,19 @@ Route::group(['prefix' => 'castle/slider','middleware'=>'admin'], function (){
         ->name('castle.slider.update');
     Route::get('/delete/{id}',[CastleSliderController::class,'destroy'])
         ->name('castle.slider.delete');
+});
+
+Route::group(['prefix' => 'castle/brand','middleware'=>'admin'], function (){
+    Route::get('/',[CastleBrandController::class,'index'])
+        ->name('castle.brand.index');
+    Route::post('/store',[CastleBrandController::class,'store'])
+        ->name('castle.brand.store');
+    Route::get('/edit/{id}',[CastleBrandController::class,'edit'])
+        ->name('castle.brand.edit');
+    Route::post('/update',[CastleBrandController::class,'update'])
+        ->name('castle.brand.update');
+    Route::get('/delete/{id}',[CastleBrandController::class,'destroy'])
+        ->name('castle.brand.delete');
 });
 
 require __DIR__.'/auth.php';

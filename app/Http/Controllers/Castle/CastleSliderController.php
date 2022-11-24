@@ -99,6 +99,8 @@ class CastleSliderController extends Controller
         $sliderId->title =$request->title;
         $sliderId->image =$save_url;
         $sliderId->status =$request->status;
+        $sliderId->update();
+
         return redirect()->route('castle.slider.index')->with('success', 'Success Created!');
 
     }
