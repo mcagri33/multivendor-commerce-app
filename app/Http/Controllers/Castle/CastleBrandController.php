@@ -41,7 +41,7 @@ class CastleBrandController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
+            'name' => 'required',
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg',
         ]);
         if ($request->hasFile('image')) {
@@ -56,7 +56,7 @@ class CastleBrandController extends Controller
             'image' => $save_url,
             'status' => $request->status,
         ]);
-        return redirect()->route('castle.slider.index')->with('success', 'Success Created!');
+        return redirect()->route('castle.brand.index')->with('success', 'Success Created!');
     }
 
     /**
