@@ -6,6 +6,7 @@ use App\Http\Controllers\Castle\CastleController;
 use App\Http\Controllers\Castle\CastleAdminController;
 use App\Http\Controllers\Castle\CastleCategoryController;
 use App\Http\Controllers\Castle\CastleProductController;
+use App\Http\Controllers\Castle\CastleSliderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -91,6 +92,21 @@ Route::group(['prefix' => 'castle/product','middleware'=>'admin'], function (){
     Route::get('/delete/{id}',[CastleProductController::class,'destroy'])
         ->name('castle.product.delete');
     Route::get('/{product_image_id}/delete',[CastleProductController::class,'destroyImage']);
+});
+
+Route::group(['prefix' => 'castle/slider','middleware'=>'admin'], function (){
+    Route::get('/',[CastleSliderController::class,'index'])
+        ->name('castle.slider.index');
+    Route::get('/create',[CastleSliderController::class,'create'])
+        ->name('castle.slider.create');
+    Route::post('/store',[CastleSliderController::class,'store'])
+        ->name('castle.slider.store');
+    Route::get('/edit/{id}',[CastleSliderController::class,'edit'])
+        ->name('castle.slider.edit');
+    Route::post('/update',[CastleSliderController::class,'update'])
+        ->name('castle.slider.update');
+    Route::get('/delete/{id}',[CastleSliderController::class,'destroy'])
+        ->name('castle.slider.delete');
 });
 
 require __DIR__.'/auth.php';

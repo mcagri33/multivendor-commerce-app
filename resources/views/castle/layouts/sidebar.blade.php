@@ -46,6 +46,7 @@
             <ul>
                 <li> <a href="{{route('castle.category.index')}}"><i class="bi bi-circle"></i>Categories</a>
                 <li> <a href="{{route('castle.product.index')}}"><i class="bi bi-circle"></i>Products</a>
+                <li> <a href="{{route('castle.slider.index')}}"><i class="bi bi-circle"></i>Sliders</a>
 
             </ul>
 
