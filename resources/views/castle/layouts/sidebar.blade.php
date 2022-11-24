@@ -47,6 +47,7 @@
                 <li> <a href="{{route('castle.category.index')}}"><i class="bi bi-circle"></i>Categories</a>
                 <li> <a href="{{route('castle.product.index')}}"><i class="bi bi-circle"></i>Products</a>
                 <li> <a href="{{route('castle.slider.index')}}"><i class="bi bi-circle"></i>Sliders</a>
+                <li> <a href="{{route('castle.brand.index')}}"><i class="bi bi-circle"></i>Brands</a>
 
             </ul>
 
@@ -64,8 +65,6 @@
                 <li> <a href="#"><i class="bi bi-circle"></i>Gift Vouchers</a>
 
             </ul>
-
-
         </li>
 
         <li>
@@ -75,8 +74,7 @@
                 <div class="menu-title">Customers</div>
             </a>
             <ul>
-                <li> <a href="#"><i class="bi bi-circle"></i>Customers</a>
-                <li> <a href="#"><i class="bi bi-circle"></i>Customers Group</a>
+                <li> <a href="{{route('castle.user.index')}}"><i class="bi bi-circle"></i>Customers</a>
                 <li> <a href="#"><i class="bi bi-circle"></i>Gift Vouchers</a>
             </ul>
         </li>
@@ -88,8 +86,8 @@
                 <div class="menu-title">System</div>
             </a>
             <ul>
-                <li> <a href="#"><i class="bi bi-circle"></i>Settings</a>
-                <li> <a href="#"><i class="bi bi-circle"></i>Admin Users</a>
+                <li> <a href="{{route('castle.setting.index')}}"><i class="bi bi-circle"></i>Settings</a>
+                <li> <a href="{{route('castle.admin.index')}}"><i class="bi bi-circle"></i>Admin User</a>
             </ul>
         </li>
 

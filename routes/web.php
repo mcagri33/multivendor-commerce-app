@@ -8,6 +8,8 @@ use App\Http\Controllers\Castle\CastleCategoryController;
 use App\Http\Controllers\Castle\CastleProductController;
 use App\Http\Controllers\Castle\CastleSliderController;
 use App\Http\Controllers\Castle\CastleBrandController;
+use App\Http\Controllers\Castle\CastleSettingController;
+use App\Http\Controllers\Castle\CastleUserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -62,6 +64,25 @@ Route::group(['prefix' => 'castle/admin','middleware'=>'admin'], function (){
         ->name('castle.admin.update');
     Route::get('/delete/{id}',[CastleAdminController::class,'destroy'])
         ->name('castle.admin.delete');
+});
+
+Route::group(['prefix' => 'castle/user','middleware'=>'admin'], function (){
+    Route::get('/',[CastleUserController::class,'index'])
+        ->name('castle.user.index');
+    Route::get('/create',[CastleUserController::class,'create'])
+        ->name('castle.user.create');
+    Route::post('/store',[CastleUserController::class,'store'])
+        ->name('castle.user.store');
+    Route::get('/edit/{id}',[CastleUserController::class,'edit'])
+        ->name('castle.user.edit');
+    Route::post('/update',[CastleUserController::class,'update'])
+        ->name('castle.user.update');
+    Route::get('/delete/{id}',[CastleUserController::class,'destroy'])
+        ->name('castle.user.delete');
+    Route::get('/change-pass/{id}',[CastleUserController::class,'changePass'])
+        ->name('castle.user.change_pass');
+    Route::post('/change-pass/update',[CastleUserController::class,'changePassStore'])
+        ->name('castle.user.pstore');
 });
 
 Route::group(['prefix' => 'castle/category','middleware'=>'admin'], function (){
@@ -119,6 +140,15 @@ Route::group(['prefix' => 'castle/brand','middleware'=>'admin'], function (){
         ->name('castle.brand.update');
     Route::get('/delete/{id}',[CastleBrandController::class,'destroy'])
         ->name('castle.brand.delete');
+});
+
+Route::group(['prefix' => 'castle/setting','middleware'=>'admin'], function (){
+    Route::get('/',[CastleSettingController::class,'index'])
+        ->name('castle.setting.index');
+    Route::get('/edit/{id}',[CastleSettingController::class,'edit'])
+        ->name('castle.setting.edit');
+    Route::post('/update',[CastleSettingController::class,'update'])
+        ->name('castle.setting.update');
 });
 
 require __DIR__.'/auth.php';
