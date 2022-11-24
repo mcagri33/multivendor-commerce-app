@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Castle\CastleController;
 use App\Http\Controllers\Castle\CastleAdminController;
 use App\Http\Controllers\Castle\CastleCategoryController;
+use App\Http\Controllers\Castle\CastleProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -74,6 +75,22 @@ Route::group(['prefix' => 'castle/category','middleware'=>'admin'], function (){
         ->name('castle.category.update');
     Route::get('/delete/{id}',[CastleCategoryController::class,'destroy'])
         ->name('castle.category.delete');
+});
+
+Route::group(['prefix' => 'castle/product','middleware'=>'admin'], function (){
+    Route::get('/',[CastleProductController::class,'index'])
+        ->name('castle.product.index');
+    Route::get('/create',[CastleProductController::class,'create'])
+        ->name('castle.product.create');
+    Route::post('/store',[CastleProductController::class,'store'])
+        ->name('castle.product.store');
+    Route::get('/edit/{id}',[CastleProductController::class,'edit'])
+        ->name('castle.product.edit');
+    Route::post('/update',[CastleProductController::class,'update'])
+        ->name('castle.product.update');
+    Route::get('/delete/{id}',[CastleProductController::class,'destroy'])
+        ->name('castle.product.delete');
+    Route::get('/{product_image_id}/delete',[CastleProductController::class,'destroyImage']);
 });
 
 require __DIR__.'/auth.php';
