@@ -10,6 +10,7 @@ use App\Http\Controllers\Castle\CastleSliderController;
 use App\Http\Controllers\Castle\CastleBrandController;
 use App\Http\Controllers\Castle\CastleSettingController;
 use App\Http\Controllers\Castle\CastleUserController;
+use App\Http\Controllers\Site\SiteController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,8 +22,9 @@ use App\Http\Controllers\Castle\CastleUserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware'=>'guest'], function (){
+    Route::get('/',[SiteController::class,'index'])
+        ->name('castle.dashboard');
 });
 
 Route::get('/dashboard', function () {
@@ -83,6 +85,10 @@ Route::group(['prefix' => 'castle/user','middleware'=>'admin'], function (){
         ->name('castle.user.change_pass');
     Route::post('/change-pass/update',[CastleUserController::class,'changePassStore'])
         ->name('castle.user.pstore');
+    Route::get('/detail/{user_id}',[CastleUserController::class,'userProfile'])
+        ->name('castle.user.detail');
+    Route::get('/detail/update',[CastleUserController::class,'userDetailUpdate'])
+        ->name('castle.user.detailUpdate');
 });
 
 Route::group(['prefix' => 'castle/category','middleware'=>'admin'], function (){

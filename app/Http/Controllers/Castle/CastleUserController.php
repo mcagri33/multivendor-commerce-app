@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Castle;
 
 use App\Http\Controllers\Controller;
+use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -45,12 +46,17 @@ class CastleUserController extends Controller
             'email' => 'required|email|unique:users,email,'.$user->id,
         ]);
 
-        User::create([
+        $userStore =User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'status' => $request->status,
         ]);
+
+        $profile = new Profile();
+        $profile->user_id = $userStore->id;
+        $profile->save();
+
         return redirect()->route('castle.user.index')->with('success', 'Success Created!');
 
     }
@@ -118,5 +124,29 @@ class CastleUserController extends Controller
         $passId->password = Hash::make($request->password);
         $passId->update();
         return redirect()->route('castle.user.index')->with('success', 'Success Created!');
+    }
+
+    public function userProfile(Request $request)
+    {
+        $user = User::find($request->id);
+        $profileFind = Profile::where('user_id', '=', $user->id)->first();
+        return view('castle.user.detail',compact('profileFind'));
+    }
+
+    public function userDetailUpdate(Request $request)
+    {
+        $profileId = Profile::findOrFail($request->id);
+        $profileId->first_name = $request->first_name;
+        $profileId->last_name = $request->last_name;
+        $profileId->address1 = $request->address1;
+        $profileId->address2 = $request->address2;
+        $profileId->phone = $request->phone;
+        $profileId->company = $request->company;
+        $profileId->country = $request->country;
+        $profileId->city = $request->city;
+        $profileId->state = $request->state;
+        $profileId->update();
+        return redirect()->route('castle.user.index')->with('success', 'Success Created!');
+
     }
 }

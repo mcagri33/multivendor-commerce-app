@@ -40,6 +40,7 @@
                             <th>#</th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Details</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
@@ -51,6 +52,7 @@
                                 <?php $count++; ?>
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
+                                <td><a href="{{route('castle.user.detail',$user->id)}}">User Detail</a> </td>
                                 <td>
                                     <div class="table-actions d-flex align-items-center gap-3 fs-6">
                                         <a href="{{route('castle.user.change_pass',$user->id)}}" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Change Password"><i class="bi bi-pencil-fill"></i></a>
